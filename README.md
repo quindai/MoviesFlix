@@ -1,6 +1,6 @@
 ![issues](https://img.shields.io/github/issues/quindai/MoviesFlix.svg)
 ![forks](https://img.shields.io/github/forks/quindai/MoviesFlix.svg)
-![stars](https://img.shields.io/github/stars/quindai/MoviesFlix.svg)
+[![stars](https://img.shields.io/github/stars/quindai/MoviesFlix.svg)](https://github.com/quindai/MoviesFlix/stargazers)
 ![GPL-3.0 Licence](https://img.shields.io/badge/license-AGPL-blue.svg)
 # MoviesFlix
 ICFlix
