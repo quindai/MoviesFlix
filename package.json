@@ -1,0 +1,33 @@
+{
+  "name": "moviesflix",
+  "version": "1.0.0",
+  "description": "Servidor para o projeto de Internet e Web 2016.2",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "sensor",
+    "sensornet",
+    "laccan",
+    "ufal",
+    "mobile",
+    "server"
+  ],
+  "author": "randy quindai",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "kerberos": "0.0.18",
+    "mongoose": "^4.2.8",
+    "nodemailer": "^2.4.2",
+    "validator": "^4.3.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quindai/MoviesFlix.git"
+  }
+}

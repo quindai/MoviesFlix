@@ -1,0 +1,159 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+
+body {
+  margin: 0!important;
+  background: #000; 
+}
+
+.navbar-header a{
+	color: crimson!important;
+}
+
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+ 	  background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+  	background-size: cover;
+  	transition: 1s opacity;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+body .container{
+	background-color: black;
+	background:rgba(0, 0, 0,0.8);
+}
+
+article p{
+  color: Azure;
+  
+}
+
+.sinopse{
+
+}
+article p a:hover{
+  text-decoration: none;
+}
+
+h1{
+	color: firebrick;
+}
+
+.lead{
+	color: Azure;
+}
+
+.thumbnail{
+	background: linear-gradient(#CC0000, #800000);
+  border-color: maroon;
+  /*background-color: maroon;*/
+}
+
+.thumbnail .caption{
+  margin-top: -40px;
+
+}
+.caption h3{
+  color: darkgoldenrod;
+  text-align: center;
+}
+
+.rating-num {
+  color: khaki;
+  font-size: 72px;
+  font-weight: 100;
+  line-height: 1em; 
+  float: right;
+  position: relative;
+  z-index: 1;
+  top: -17px;
+  text-shadow: 0 0 3px #FF0000, 0 0 5px #4B0082;
+}
+
+/*stars rating*/
+fieldset, label { margin: 0; padding: 0; }
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  
+  font-size: 1.25em;
+  font-family: FontAwesome;
+   display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+
+.block-with-text {
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative; 
+  /* use this value to count block height */
+  line-height: 1.2em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 4.8em; 
+  /* fix problem when last visible word doesn't adjoin right side  */
+  text-align: justify;
+  
+  /* */
+  margin-right: -1em;
+  padding-right: 1em;
+}
+.block-with-text:before {
+  /* points in the end */
+  content: '...';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of block */
+  right: 0;
+  bottom: 0;
+}
+.block-with-text:after {
+  /* points in the end */
+  content: '';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of text */
+  right: 0;
+  width: 1em;
+  /* set width and height */
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
+}
