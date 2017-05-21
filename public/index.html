@@ -39,7 +39,7 @@
 	          	<form class="navbar-form navbar-right" role="search">
 				 	<div class="input-group">
 				 	 	<span class="input-group-btn">
-	        				<button class="btn btn-primary" type="button">Cadastrar</button>
+	        				<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" data-backdrop="static">Cadastrar</button>
 	      				</span>
 		      			<input type="text" class="form-control" placeholder="Pesquisar filme">
 		      			<span class="input-group-btn">
@@ -447,6 +447,100 @@
 	    	</div>
 		</div>
 	</article>
+
+<!--modal cadastrar-->
+	<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Cadastrar</h4>
+        </div>
+        <div class="modal-body">
+          	<form role="form">
+          		<div style="padding-left: 40%;">
+          		 	<label class="radio-inline" checked><input type="radio" name="optradio">Filme</label>
+					<label class="radio-inline"><input type="radio" name="optradio">Série</label>
+					<label class="radio-inline"><input type="radio" name="optradio">TV Show</label> 
+				</div>
+          		<div class="form-group">
+          			<label for="title">Titulo</label>
+          			<input type="text" class="form-control" id="title" name="title" placeholder="Insira o título aqui" />	
+          		</div>
+
+				<div class="form-group">
+          			<label for="language">Idioma original</label>
+          			<input type="text" class="form-control" id="language" name="language" placeholder="Insira o idioma do filme original aqui" />	
+          		</div>
+
+          		<div class="form-group">
+          			<label for="originaltitle">Título</label>
+          			<input type="text" class="form-control" id="originaltitle" name="originaltitle" placeholder="Insira o título original aqui" />	
+          		</div>
+				<!--div class="form-group">
+					<label for="comment">Link Comentarios</label>
+					<textarea class="form-control" type="text" id="comment" name="comment" rows="5"></textarea>
+				</div-->
+
+				<div class="form-group">
+          			<label for="release">Data que foi lançado</label>
+          			<input type="date" class="form-control" id="release" name="release"  />	
+          		</div>
+				
+				<div class="form-group">
+          			<label for="stars">Pontução</label>
+          			<select class="form-control" id="stars">
+        				<option>0</option> <option>1</option> <option>2</option>
+        				<option>3</option> <option>4</option> <option>5</option>
+        				<option>6</option> <option>7</option> <option>8</option>
+        				<option>9</option><option>10</option>
+      				</select>	
+          		</div>
+
+				<div class="form-group">
+          			<label for="categories">Géneros</label>
+          			<input type="text" class="form-control" id="categories" name="categories" placeholder="Géneros separados por vírgula" />	
+          		</div>
+
+				<div class="form-group">
+          			<label for="duration">Duração</label>
+          			<input type="text" class="form-control" id="duration" name="duration" placeholder="2h 16m" />	
+          		</div>
+
+
+				<div class="form-group">
+					<label for="sinopse">Sinopse</label>
+					<textarea class="form-control" type="text" id="sinopse" name="sinopse" rows="5"></textarea>
+				</div>
+	
+				<div class="form-group actors">
+          			<label for="actors">Ator(es)</label>
+          			<input type="text" class="form-control" id="actors" name="actors" placeholder="Nome d@ Ator(a)" />	<button>+</button>
+          			<input type="text" class="form-control" id="actorpage" placeholder="página oficial do autor" />
+          			<input type="text" class="form-control" id="actorphoto" placeholder="foto do actor" />
+          		</div>
+
+				<div class="form-group actors">
+          			<label for="posters">Imagens</label>
+          			<input type="text" class="form-control" id="posters" name="posters" placeholder="Url Capa principal tamanhoo yyyxyyy" />
+          			<input type="text" class="form-control" id="backimage" placeholder="Url SubCapa tamanho yyyyxyyy" />
+          			<input type="text" class="form-control" id="smallposter" placeholder="Url Capa de rosto tamanho yyyyxyyy" />
+          			<input type="text" class="form-control" id="othersposter" placeholder="url de outras imagens do filme separados por vírgula" />
+          		</div>
+
+				<div class="form-group">
+          			<label for="trailer">Trailer</label>
+          			<input type="text" class="form-control" id="trailer" name="trailer" placeholder="Trailer Url" />	
+          		</div>
+			</form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Salvar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 

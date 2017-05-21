@@ -13,7 +13,7 @@ var allowCors = function(req, res, next){
  app.listen(5000);
  app.use(allowCors);
  app.use(bodyParser.json());
- //app.use(express.static(__dirname + '/doc'));
+ app.use(express.static(__dirname + '/public'));
  app.use(bodyParser.urlencoded ({
  	extended: true
 }));

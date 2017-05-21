@@ -1,16 +1,12 @@
-var db_string = 'mongodb://quindai:r4ndy123@ds137141.mlab.com:37141/icflix';
-var options = {
-    server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
-    replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }
-};
-var mongoose = require('mongoose').connect(db_string, options);
+var db_string = 'mongodb://127.0.0.1/icflix';
+var mongoose = require('mongoose').connect(db_string);
 var db = mongoose.connection;
 
-var Movies;
+var Movies, Series, TvShows;
 
  db.on('error', console.error.bind(console, 'Erro ao conectar'));
  db.once('open', function(){
- 	console.log("Conectado com sucesso");
+ 	console.log("Conectado ao MongoDB com sucesso!");
   	var movieSchema = mongoose.Schema({
  // 	colunas do banco de dados
 	  	'id': String,
@@ -22,9 +18,9 @@ var Movies;
 	    'stars': String,
 	    'categories': [],
 	    'duracao': String,
-	    'autores': [],
+	    'atores': [],
 	    'trailer': String,
-	    'lancamento': String
+	    'ano': String
 	 });
 
   	/*var serieSchema = mongoose.Schema({
@@ -41,10 +37,14 @@ var Movies;
 	    autores: [],
 	    trailer: String,
 	    lancamento: String
+  	});
+
+  	var tvshowSchema = mongoose.Schema({
+	
   	});*/
 
 console.log(mongoose.model('movies', movieSchema));
 	// podemos usar os metodos do model do mongoose
 	 exports.Movies = mongoose.model('Movies', movieSchema);
-	 //exports.Series = mongoose.model('series', serieSchema);
+	 //exports.Series = mongoose.model('Series', serieSchema);
  });
