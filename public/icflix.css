@@ -19,7 +19,7 @@ video {
     height: auto;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
- 	  background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+ 	 /* background: url('./movies.jpg') no-repeat;*/
   	background-size: cover;
   	transition: 1s opacity;
 }
@@ -29,6 +29,9 @@ video {
   text-align: center;
 }
 
+.searchR{
+  margin-top: 50px;
+}
 body .container{
 	background-color: black;
 	background:rgba(0, 0, 0,0.8);
@@ -60,6 +63,10 @@ h1{
   /*background-color: maroon;*/
 }
 
+#details{
+  text-decoration: none;
+}
+
 .thumbnail .caption{
   margin-top: -40px;
 
@@ -67,6 +74,7 @@ h1{
 .caption h3{
   color: darkgoldenrod;
   text-align: center;
+  text-shadow: 0 0 5px #FF0000, 0 0 5px #4B0082;
 }
 
 .rating-num {
@@ -118,6 +126,16 @@ fieldset, label { margin: 0; padding: 0; }
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 
+span.stars, span.stars span {
+    display: block;
+    background: url(stars.png) 0 -16px repeat-x;
+    width: 80px;
+    height: 16px;
+}
+
+span.stars span {
+    background-position: 0 0;
+}
 
 .block-with-text {
   /* hide text if it more than N lines  */
@@ -158,6 +176,7 @@ fieldset, label { margin: 0; padding: 0; }
   background: white;
 }
 
+/*form cadastrar*/
 .modal-header {
       background-color: seagreen;
      /* color:white !important;
@@ -165,14 +184,33 @@ fieldset, label { margin: 0; padding: 0; }
       font-size: 30px;*/
       border-radius: 5px 5px 0 0;
   }
- .modal-footer {
-      background-color: #f9f9f9;
-  }
 
-  .modal-dialog{
-    margin-top: 5%;
-  }
+ .modal-header h4, .close{
+  color: Azure;
+}
 
-  .modal-body{
-    overflow-y: auto;
-  }
+.modal-footer {
+    background-color: #f9f9f9;
+}
+
+.modal-dialog{
+  margin-top: 5%;
+}
+
+.modal-body .btn-success{
+  background-color: #CC6E0E;
+  border-color: #CC8F0E;
+}
+
+.modal-body .btn-success:hover{
+  background-color: #B26515;
+}
+
+.modal-body .btn-success.active{
+  background-color: #73520E;
+  border-color: #B26515;
+}
+
+.modal-body .btn-success:focus{
+  box-shadow: 0 0 0 3px #CC8F0E;
+}

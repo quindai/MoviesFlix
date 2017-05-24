@@ -1,21 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
-	<title>Informacoes do filme</title>
+  <title>ICFlix</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 	<style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
 </head>
 <body>
-	<div class="container" style="display: none;">
-	<div>
-		<img src=""/>
-		<p>Duracao</p>
-		<p>estrelas</p>
-		<p>Titulo</p>
-		<p>sinopse</p>
-	</div>
-	<div>
-		<p>atores</p>	<p>trailer</p>
-	</div>
-	</div>
-	<p>dsdsds</p>
+
+<div class="container-fluid">
+  <div class="row content">
+    
+      <img class="col-sm-5" id="poster" src="" style="height: 80%;" />
+    
+
+    <div class="col-sm-7">
+      <h4><small>Detalhes do Filme</small></h4>
+      <hr>
+      <h2 id='title'></h2>
+      <h5 id='duracao'><span class="glyphicon glyphicon-time"></span> </h5>
+      <h5 id='stars'><span class="label label-danger"></span> </h5>
+      <h5 id='release'><span class="label label-primary"></span></h5><br>
+      <h5 id='categories'><span class="label label-primary"></span></h5><br>
+      <p id='sinopse'></p>
+      <br><br>
+      
+      <h4><small>ELENCO</small></h4>
+      <hr>
+      <h2>Atores Principais</h2>
+      <hr>
+      
+      <div class="row" id='atores'>
+        <div class="col-sm-2 text-center">
+          <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+        </div>
+        <div class="col-sm-10">
+          <h4 id='aname'>Anja</h4>
+          <p id='apage'>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <br>
+      </div>
+    </div>
+    <h4><small>TRAILER</small></h4>
+      <hr>
+		 <iframe id='trailer' width="100%" height="315" src=""></iframe> 
+	<h4><small>IMAGENS</small></h4>
+      <hr>
+
+      <h4><small>COMENTÁRIOS</small></h4>
+      <hr>
+  </div>
+</div>
+
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+<script type="text/javascript">
+		var QueryString = function () {
+		  // This function is anonymous, is executed immediately and 
+		  // the return value is assigned to QueryString!
+		  var query_string = {};
+		  var query = window.location.search.substring(1);
+		  var vars = query.split("&");
+		  for (var i=0;i<vars.length;i++) {
+		    var pair = vars[i].split("=");
+		        // If first entry with this name
+		    if (typeof query_string[pair[0]] === "undefined") {
+		      query_string[pair[0]] = decodeURIComponent(pair[1]);
+		        // If second entry with this name
+		    } else if (typeof query_string[pair[0]] === "string") {
+		      var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+		      query_string[pair[0]] = arr;
+		        // If third or later entry with this name
+		    } else {
+		      query_string[pair[0]].push(decodeURIComponent(pair[1]));
+		    }
+		  } 
+		  return query_string;
+		}();
+
+		var data = QueryString;
+		document.getElementById('title').innerHTML = data.title + ' - '+ data.originaltitle;
+		document.getElementById('duracao').innerHTML = '<span class="glyphicon glyphicon-time"></span> ' +data.duracao;
+		document.getElementById('stars').innerHTML = '<span class="label label-danger">'+ data.stars+ ' estrelas</span>';
+		document.getElementById('release').innerHTML = '<span class="label label-primary"> Lançado em '+ data.release + '</span>';
+		document.getElementById('categories').innerHTML = '<h4><small>Categorias: '+ data.categories +'</small></h4>';
+		document.getElementById('sinopse').innerHTML = data.sinopse;
+		document.getElementById('aname').innerHTML = data.actorsname;
+		document.getElementById('apage').innerHTML = data.apage;
+		document.getElementById('trailer').src = data.trailer;
+		document.getElementById('poster').src = data.poster;
+
+
+	</script>
 </body>
 </html>

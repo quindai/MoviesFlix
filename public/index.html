@@ -6,7 +6,7 @@
 	 <link href="icflix.css" rel="stylesheet">
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
 	<section class="background-video">
@@ -36,151 +36,38 @@
 	            <li><a href="#tv_shows">TV Shows</a></li>
 	          </ul>
 
-	          	<form class="navbar-form navbar-right" role="search">
+	          	<!--form class="navbar-form navbar-right" role="search"-->
+	          	<div class="navbar-form navbar-right">
 				 	<div class="input-group">
 				 	 	<span class="input-group-btn">
 	        				<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" data-backdrop="static">Cadastrar</button>
 	      				</span>
-		      			<input type="text" class="form-control" placeholder="Pesquisar filme">
-		      			<span class="input-group-btn">
-		        			<button class="btn btn-default" type="button">
-		        				<span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>
-		        			</button>
-		      			</span>
+		      			
+		      				<input type="text" class="form-control" placeholder="Pesquisar filme" id="pesquisa">
+			      			<span class="input-group-btn">
+			        			<button class="btn btn-default" onclick="pesquisar(this, '/movies/search','GET')">
+			        				<span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>
+			        			</button>
+			      			</span>
+			      		
 	   				</div><!-- /input-group -->
-				</form>
+				<!--/form--></div>
 	        </div><!--/.nav-collapse -->
 	      </div>
 	    </nav>
 	</header>
 
 	<article> <!--Conteudo dinamico da pagina-->
-	    <div class="container">
+
+	    <div class="container" id="main">
 	    	<div class="starter-template">
 		        <h1>Bem vindo ao ICFlix</h1>
 		        <p class="lead">Seu site de entretenimento de filmes, seriados e programas de tv.<br> Aqui você encontrará toda a informação que procura do seu filme favorito.</p>
 	      	</div>
 	      	<div class="row">
 	      	<p>Filmes >> <a href="">Mostrar mais...</a></p>
-			  <div class="col-sm-6 col-md-3">
-			  	<a href=""><!--Vai apontar para os detalhes-->
-				    <div class="thumbnail">
-				      <img src="loganw.jpg" alt="...">
-				      <div class="caption">
-				        <h3>Thumbnail label</h3>
-				        <div class="sinopse">
-				        	<p class="block-with-text" style="width: 100%;">"Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas</p>
-						</div>
-				        <!--Stars effect-->
-						<fieldset class="rating">
-						    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-						    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-						    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-						    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-						    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-						    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-						    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-						    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-						    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-						    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-						</fieldset>
-
-						<span class="rating-num">4.0</span>
-						<br/><br/>
-				      </div>
-				    </div>
-			    </a>
-			  </div> <!--Fim de thumbnail-->
-
-			  <div class="col-sm-6 col-md-3">
-			  	<a href=""><!--Vai apontar para os detalhes-->
-				    <div class="thumbnail">
-				      <img src="loganw.jpg" alt="...">
-				      <div class="caption">
-				        <h3>Thumbnail label</h3>
-				        <div class="sinopse">
-				        	<p class="block-with-text" style="width: 100%;">"Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas</p>
-						</div>
-				        <!--Stars effect-->
-						<fieldset class="rating">
-						    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-						    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-						    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-						    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-						    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-						    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-						    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-						    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-						    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-						    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-						</fieldset>
-
-						<span class="rating-num">4.0</span>
-						<br/><br/>
-				      </div>
-				    </div>
-			    </a>
-			  </div> <!--Fim de thumbnail-->
-
-			  <div class="col-sm-6 col-md-3">
-			  	<a href=""><!--Vai apontar para os detalhes-->
-				    <div class="thumbnail">
-				      <img src="loganw.jpg" alt="...">
-				      <div class="caption">
-				        <h3>Thumbnail label</h3>
-				        <div class="sinopse">
-				        	<p class="block-with-text" style="width: 100%;">"Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas</p>
-						</div>
-				        <!--Stars effect-->
-						<fieldset class="rating">
-						    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-						    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-						    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-						    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-						    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-						    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-						    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-						    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-						    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-						    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-						</fieldset>
-
-						<span class="rating-num">4.0</span>
-						<br/><br/>
-				      </div>
-				    </div>
-			    </a>
-			  </div> <!--Fim de thumbnail-->
-
-			  <div class="col-sm-6 col-md-3">
-			  	<a href=""><!--Vai apontar para os detalhes-->
-				    <div class="thumbnail">
-				      <img src="loganw.jpg" alt="...">
-				      <div class="caption">
-				        <h3>Thumbnail label</h3>
-				        <div class="sinopse">
-				        	<p class="block-with-text" style="width: 100%;">"Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas</p>
-						</div>
-				        <!--Stars effect-->
-						<fieldset class="rating">
-						    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-						    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-						    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-						    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-						    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-						    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-						    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-						    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-						    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-						    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-						</fieldset>
-
-						<span class="rating-num">4.0</span>
-						<br/><br/>
-				      </div>
-				    </div>
-			    </a>
-			  </div> <!--Fim de thumbnail-->
+			  <div id="movies_main"></div>
+			  
 	      	<p>Séries >> <a href="">Mostrar mais...</a></p>
 			  <div class="col-sm-6 col-md-3">
 			  	<a href=""><!--Vai apontar para os detalhes-->
@@ -421,32 +308,11 @@
 				    </div>
 			    </a>
 			  </div> <!--Fim de thumbnail-->
-
-
-				<footer>
-					<nav aria-label="Page navigation">
-		  				<ul class="pagination">
-		   				 	<li>
-			      				<a href="#" aria-label="Previous">
-			        				<span aria-hidden="true">&laquo;</span>
-			      				</a>
-		    				</li>
-						    <li><a href="#">1</a></li>
-						    <li><a href="#">2</a></li>
-						    <li><a href="#">3</a></li>
-						    <li><a href="#">4</a></li>
-						    <li><a href="#">5</a></li>
-						    <li>
-						      <a href="#" aria-label="Next">
-						        <span aria-hidden="true">&raquo;</span>
-						      </a>
-						    </li>
-		  				</ul>
-					</nav>
-				</footer>
+				
 	    	</div>
 		</div>
 	</article>
+
 
 <!--modal cadastrar-->
 	<div class="modal fade" id="myModal" role="dialog">
@@ -457,15 +323,22 @@
           <h4 class="modal-title">Cadastrar</h4>
         </div>
         <div class="modal-body">
-          	<form role="form">
-          		<div style="padding-left: 40%;">
-          		 	<label class="radio-inline" checked><input type="radio" name="optradio">Filme</label>
-					<label class="radio-inline"><input type="radio" name="optradio">Série</label>
-					<label class="radio-inline"><input type="radio" name="optradio">TV Show</label> 
+          	<!--form role="form" data-toggle="validator" action="/movies" method="POST" onsubmit="dispose('#myModal')"-->
+          	<form id="form-movies" role="form" data-toggle="validator" onsubmit="gravar(this, '/movies','POST')">
+          		<div class="btn-group" data-toggle="buttons" style="padding-left: 35%;">
+  					<label class="btn btn-success active">
+    					<input type="radio" name="options" id="option1" autocomplete="off" checked>Filme
+ 	 				</label>
+				  	<label class="btn btn-success">
+				    	<input type="radio" name="options" id="option2" autocomplete="off">Série
+				  	</label>
+				  	<label class="btn btn-success">
+				    	<input type="radio" name="options" id="option3" autocomplete="off">TV Show
+				  	</label>
 				</div>
           		<div class="form-group">
           			<label for="title">Titulo</label>
-          			<input type="text" class="form-control" id="title" name="title" placeholder="Insira o título aqui" />	
+          			<input type="text" class="form-control" id="title" name="title" placeholder="Insira o título aqui" value="" required />
           		</div>
 
 				<div class="form-group">
@@ -474,7 +347,7 @@
           		</div>
 
           		<div class="form-group">
-          			<label for="originaltitle">Título</label>
+          			<label for="originaltitle">Título original</label>
           			<input type="text" class="form-control" id="originaltitle" name="originaltitle" placeholder="Insira o título original aqui" />	
           		</div>
 				<!--div class="form-group">
@@ -488,8 +361,8 @@
           		</div>
 				
 				<div class="form-group">
-          			<label for="stars">Pontução</label>
-          			<select class="form-control" id="stars">
+          			<label for="stars">Pontuação</label>
+          			<select class="form-control" id="stars" name="stars">
         				<option>0</option> <option>1</option> <option>2</option>
         				<option>3</option> <option>4</option> <option>5</option>
         				<option>6</option> <option>7</option> <option>8</option>
@@ -514,35 +387,40 @@
 				</div>
 	
 				<div class="form-group actors">
-          			<label for="actors">Ator(es)</label>
-          			<input type="text" class="form-control" id="actors" name="actors" placeholder="Nome d@ Ator(a)" />	<button>+</button>
-          			<input type="text" class="form-control" id="actorpage" placeholder="página oficial do autor" />
-          			<input type="text" class="form-control" id="actorphoto" placeholder="foto do actor" />
+          			<label for="actorname">Ator(es)</label>
+          			<input type="text" class="form-control" id="actorname" name="actorname" placeholder="Nome dos Atores separados por vírgula" />
+          			<input type="text" class="form-control" id="actorpage" placeholder="Página oficial dos atores" />
+          			<input type="text" class="form-control" id="actorphoto" placeholder="url foto dos atores" />
           		</div>
 
-				<div class="form-group actors">
-          			<label for="posters">Imagens</label>
-          			<input type="text" class="form-control" id="posters" name="posters" placeholder="Url Capa principal tamanhoo yyyxyyy" />
-          			<input type="text" class="form-control" id="backimage" placeholder="Url SubCapa tamanho yyyyxyyy" />
-          			<input type="text" class="form-control" id="smallposter" placeholder="Url Capa de rosto tamanho yyyyxyyy" />
-          			<input type="text" class="form-control" id="othersposter" placeholder="url de outras imagens do filme separados por vírgula" />
+				<div class="form-group">
+          			<label for="poster">Imagens</label>
+          			<input type="text" class="form-control" id="poster" name="poster" placeholder="Url Capa principal tamanhoo yyyxyyy" />
+          			<input type="text" class="form-control" id="backimage" placeholder="Url SubCapa tamanho yyyyxyyy" name="backimage" />
+          			<input type="text" class="form-control" id="smallposter" placeholder="Url Capa de rosto tamanho 1920 x 1080" name="smallposter" />
+          			<input type="text" class="form-control" id="othersposter" placeholder="url de outras imagens do filme separados por vírgula" name="othersposter" />
           		</div>
 
 				<div class="form-group">
           			<label for="trailer">Trailer</label>
           			<input type="text" class="form-control" id="trailer" name="trailer" placeholder="Trailer Url" />	
           		</div>
+          		<button class="btn btn-info form-control">Salvar</button>
 			</form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Salvar</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         </div>
+
       </div>
     </div>
   </div>
+  	<script type="text/javascript" src="functions.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!--script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script
+	http://1000hz.github.io/bootstrap-validator/-->
 
 
 <!--
