@@ -13,7 +13,7 @@ exports.list = function(callback){
 
 exports.search = function(arg, callback){
 	console.log("Em search");
-	db.Movies.find({'title': new RegExp('^'+arg+'$',"i")}, function(error, movies){
+	db.Movies.find({'title': new RegExp(arg+'+',"i")}, function(error, movies){
 		if(error){
 			callback({error: 'Não foi possível retornar os dados!'});
 		} else {
@@ -51,9 +51,9 @@ exports.save = function(data, callback){
 		    'categories': data.categories,	//*
 		    'duracao': data.duration,	//*
 		    'atores': [{
-		    		'name': "Keanu Reeves",
-		    		'page': "https://www.themoviedb.org/person/6384-keanu-reeves",
-		    		'photo': "https://image.tmdb.org/t/p/w640/id1qIb7cZs2eQno90KsKwG8VLGN.jpg"
+		    		'name': data.actorname,
+		    		'page': data.actorpage,
+		    		'photo': data.actorphoto
 		    		}],			//*
 		    'trailer': data.trailer,	//*
 		    'ano': "1999"

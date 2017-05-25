@@ -1,21 +1,58 @@
 
-     
+ /**Navbar function
+ */    
+ 
 
 window.onload = function(){
 	$.get("/movies/4", function(data, status){
-		var movie, serie, tvshow;
-		for(i=0;i<4; ++i){
-			movie = '<div class="col-sm-6 col-md-3">'+
-			  		'<a href="details.html?title='+ data[i].title +'&poster='+ data[i].images[0].poster +'&duracao='+ data[i].duracao +
-			  		'&release='+ data[i].release +'&stars='+ data[i].stars +'&categories='+ data[i].categories +'&sinopse='+ data[i].sinopse +
-			  		'&originaltitle='+ data[i].origtitle +'&actorsname='+ data[i].atores[0].name +'&apage='+ data[i].atores[0].page +
-			  		'&trailer='+ data[i].trailer +'">'+
+		//var movie, serie, tvshow;
+		debugger;
+		for(i=0;i<((data.length<4) ? data.length: 4); ++i){			
+			$('#movies_main').append( preenche(data[i]) );
+		};
+		//$('#movies_main').append( '<p>Séries >> <a href="#series" id='' >Mostrar mais...</a></p>' );
+	//debugger;
+	});
+
+	$.get("/series/4", function(data, status){
+		//var movie, serie, tvshow;
+		debugger;
+		for(i=0;i<((data.length<4) ? data.length: 4); ++i){			
+			$('#series_main').append( preenche(data[i]) );
+		};
+		//$('#movies_main').append( '<p>Séries >> <a href="#series" id='' >Mostrar mais...</a></p>' );
+	//debugger;
+	});
+
+	$.get("/tvshows/4", function(data, status){
+		//var movie, serie, tvshow;
+		debugger;
+		for(i=0;i<((data.length<4) ? data.length: 4); ++i){			
+			$('#tvshows_main').append( preenche(data[i]) );
+		};
+		//$('#movies_main').append( '<p>Séries >> <a href="#series" id='' >Mostrar mais...</a></p>' );
+	//debugger;
+	});
+};
+
+var radio_control = function(){
+	var value = document.querySelector('input[name="options"]:checked').value;
+	document.getElementById('save_at').value = value;
+	document.getElementById('control-temps').style.display = (value == '/movies' ? 'none': 'block');
+};
+
+	var preenche = function(data){
+		return '<div class="col-sm-6 col-md-3 thumbs">'+
+			  		'<a href="details.html?title='+ data.title +'&poster='+ data.images[0].poster +'&duracao='+ data.duracao +
+			  		'&release='+ data.release +'&stars='+ data.stars +'&categories='+ data.categories +'&sinopse='+ data.sinopse +
+			  		'&originaltitle='+ data.origtitle +'&actorsname='+ data.atores[0].name +'&apage='+ data.atores[0].page +
+			  		'&aphoto='+ data.atores[0].photo +'&trailer='+ data.trailer +'">'+
 				    '<div class="thumbnail">'+
-				      '<img src="'+ data[i].images[0].smallposter +'" alt="Assistir '+ data[i].title +'">'+
+				      '<img src="'+ data.images[0].smallposter +'" alt="Assistir '+ data.title +'">'+
 				      '<div class="caption">'+
-				        '<h3>'+ data[i].title +'</h3>'+
+				        '<h3>'+ data.title +'</h3>'+
 				        '<div class="sinopse">'+
-				        	'<p class="block-with-text" style="width: 100%;">'+ data[i].sinopse +'</p>'+
+				        	'<p class="block-with-text" style="width: 100%;">'+ data.sinopse +'</p>'+
 						'</div>'+
 						'<fieldset class="rating">'+
 						    '<input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>'+
@@ -30,26 +67,21 @@ window.onload = function(){
 						    '<input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>'+
 						'</fieldset>'+
 
-						'<span class="rating-num">'+ data[i].stars +'</span>'+
+						'<span class="rating-num">'+ data.stars +'</span>'+
 						'<br/><br/>'+
 				      '</div>'+
 				    '</div>'+
 			   		'</a>'+
 			  		'</div>';
-
-			  $('#movies_main').append(movie);
-
-		};
-	//debugger;
-	});
-};
+	};
 
 	var pesquisar = function(form, url, method){
 
-		dataForm = document.getElementById("pesquisa").value;
+		dataForm = $.trim(document.getElementById("pesquisa").value);
+		if(dataForm === "") return;
 		var data = [];
 		var myhttpRequest = CreateRequestObj();
-		var movie = "";
+		//var movie = "";
 
 		myhttpRequest.onreadystatechange = function(){
 			if(myhttpRequest.readyState == 4 && myhttpRequest.status==200){
@@ -59,60 +91,54 @@ window.onload = function(){
 				$('#main').append('<div class="row searchR" ><h2>Resultado da Pesquisa</h2></div><hr>');
 
 				for(i=0;i<data.length; ++i){
-			movie += '<div class="col-sm-6 col-md-3">'+
-			  		'<a href="details.html?title='+ data[i].title +'&poster='+ data[i].images[0].poster +'&duracao='+ data[i].duracao +
-			  		'&release='+ data[i].release +'&stars='+ data[i].stars +'&categories='+ data[i].categories +'&sinopse='+ data[i].sinopse +
-			  		'&originaltitle='+ data[i].origtitle +'&actorsname='+ data[i].atores[0].name +'&apage='+ data[i].atores[0].page +
-			  		'&trailer='+ data[i].trailer +'">'+
-				    '<div class="thumbnail">'+
-				      '<img src="'+ data[i].images[0].smallposter +'" alt="Assistir '+ data[i].title +'">'+
-				      '<div class="caption">'+
-				        '<h3>'+ data[i].title +'</h3>'+
-				        '<div class="sinopse">'+
-				        	'<p class="block-with-text" style="width: 100%;">'+ data[i].sinopse +'</p>'+
-						'</div>'+
-						'<fieldset class="rating">'+
-						    '<input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>'+
-						    '<input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>'+
-						    '<input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>'+
-						    '<input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>'+
-						    '<input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>'+
-						    '<input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>'+
-						    '<input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>'+
-						    '<input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>'+
-						    '<input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>'+
-						    '<input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>'+
-						'</fieldset>'+
-
-						'<span class="rating-num">'+ data[i].stars +'</span>'+
-						'<br/><br/>'+
-				      '</div>'+
-				    '</div>'+
-			   		'</a>'+
-			  		'</div>';
-			};
-			$('#main').append('<div id="movies_main">'+movie+'</div>');
-				console.log(data.length);
+					$('#main').append('<div id="movies_main">'+ preenche( data[i] ) +'</div>');						  		
+				};
 			}
 		};
 
-		
 		myhttpRequest.open(method, url +"/"+ dataForm, true);
-		myhttpRequest.send(null);
-		
-		
-		
-
-		
-
-		
+		myhttpRequest.send(null);		
+				
 		//document.getElementById("main").style.display = 'none'; $('#movies_main').append(movie);
-		debugger;
-		console.log(data);
-//debugger;
+		//debugger;
 	};
 
-     var gravar = function(form, url, method){  //inspired by - http://help.dottoro.com/ljppxrti.php
+	var yolo = function(url){  //preenche a tela com filmes, series ou tvshows apenas
+		$.get(url, function(data, status){
+			document.getElementById("main").innerHTML = ''; //limpa tela
+			$('#main').append('<div class="row searchR" ><div class="btn-group" data-toggle="buttons" style="padding-left: 25%;">'+
+  					'<label class="btn btn-success active">'+
+    					'<input type="radio" name="options" id="option1" autocomplete="off" checked>TODOS'+
+ 	 				'</label>'+
+ 	 				'<label class="btn btn-success">'+
+    					'<input type="radio" name="options" id="option1" autocomplete="off" checked>AÇÃO'+
+ 	 				'</label>'+
+				  	'<label class="btn btn-success">'+
+				    	'<input type="radio" name="options" id="option2" autocomplete="off">SCI-FI'+
+				  	'</label>'+
+				  	'<label class="btn btn-success">'+
+				    	'<input type="radio" name="options" id="option3" autocomplete="off">ROMANCE'+
+				  	'</label>'+
+				  	'<label class="btn btn-success">'+
+				    	'<input type="radio" name="options" id="option3" autocomplete="off">COMÉDIA'+
+				  	'</label>'+
+				  	'<label class="btn btn-success">'+
+				    	'<input type="radio" name="options" id="option3" autocomplete="off">AVENTURA'+
+				  	'</label>'+
+				  	'<label class="btn btn-success">'+
+				    	'<input type="radio" name="options" id="option3" autocomplete="off">ANIMAÇÃO'+
+				  	'</label>'+
+					'</div><hr>');
+			for(i=0;i < data.length; ++i){			
+				$('#main').append('<div id="movies_main">'+ preenche( data[i] ) +'</div>');	
+			};
+		//debugger;
+		});
+
+	};
+
+
+     var gravar = function(form){  //inspired by - http://help.dottoro.com/ljppxrti.php
      	//alert('successfully submitted');
      	data = GetMessageBody(form);
      	//debugger;
@@ -120,7 +146,7 @@ window.onload = function(){
      	var myhttpRequest = CreateRequestObj();
 
      	 try {
-                myhttpRequest.open (method, url, true);   // asynchron - https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open
+                myhttpRequest.open ('POST', document.getElementById('save_at').value, true);   // asynchron - https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open
                 myhttpRequest.onreadystatechange = function () {
                 	OnReadyStateChanged (myhttpRequest, form)
                 };

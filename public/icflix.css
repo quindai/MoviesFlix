@@ -45,7 +45,7 @@ article p{
 .sinopse{
 
 }
-article p a:hover{
+.thumbs a:hover{
   text-decoration: none;
 }
 
@@ -61,6 +61,7 @@ h1{
 	background: linear-gradient(#CC0000, #800000);
   border-color: maroon;
   /*background-color: maroon;*/
+  height: 320px;
 }
 
 #details{
@@ -75,6 +76,7 @@ h1{
   color: darkgoldenrod;
   text-align: center;
   text-shadow: 0 0 5px #FF0000, 0 0 5px #4B0082;
+
 }
 
 .rating-num {

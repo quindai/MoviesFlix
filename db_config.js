@@ -34,28 +34,35 @@ var Movies, Series, TvShows;
 	    'ano': String
 	 });
 
-  	/*var serieSchema = mongoose.Schema({
-  		id: String,
-	    title: String,
-	    subtitle: String,
-	    images: [],
-	    comment: String,
-	    sinopse: String,
-	    release: String,
-	    stars: String,
-	    categories: [],
-	    duracao: String,
-	    autores: [],
-	    trailer: String,
-	    lancamento: String
+  	var serieSchema = mongoose.Schema({
+  		'id': String,		//*
+	    'title': String, 	//*
+	    'origlang': String,	//*
+	    'origtitle': String,//*
+	    'images': [{
+	    		'poster': String,
+	    		'backimage': String,
+	    		'smallposter': String,
+	    		'othersposter': []
+	    		}],
+	    'comment': String,	//replicate title
+	    'sinopse': String,	//*
+	    'release': String,	//*
+	    'stars': String,	//*
+	    'categories': String,	//*
+	    'duracao': String,	//*
+	    'atores': [{
+	    		'name': String,
+	    		'page': String,
+	    		'photo': String
+	    		}],			//*
+	    'trailer': String,	//*
+	    'seasons': String
   	});
-
-  	var tvshowSchema = mongoose.Schema({
-	
-  	});*/
 
 console.log(mongoose.model('movies', movieSchema));
 	// podemos usar os metodos do model do mongoose
 	 exports.Movies = mongoose.model('Movies', movieSchema);
-	 //exports.Series = mongoose.model('Series', serieSchema);
+	 exports.Series = mongoose.model('Series', serieSchema);
+	 exports.TvShows = mongoose.model('TvShows', serieSchema);
  });

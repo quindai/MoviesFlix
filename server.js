@@ -1,5 +1,7 @@
 var app = require('./server_config.js');
 var movieCtrl = require('./controller/movieCtrl.js');
+var serieCtrl = require('./controller/serieCtrl.js');
+var tvshowCtrl = require('./controller/tvshowCtrl.js');
 var validator = require('validator'); //medida de segurança
 var http = require('http');
 
@@ -43,6 +45,53 @@ app.get('/movies/:num', function(req, res){
 	console.log("Pegando apenas main "+ req.params.num);
 });
 
+app.get('/unified/:num', function(req, res){
+	var data = [];
+	movieCtrl.listLimit(req.params.num, function(resp){
+		data.push(resp);
+	});
+
+	serieCtrl.listLimit(req.params.num, function(resp){
+		data.push(resp);
+	});
+
+	tvshowCtrl.listLimit(req.params.num, function(resp){
+		data.push(resp);
+	});
+
+	res.send(data);
+});
+
+app.get('/series', function(req, res){
+	console.log("Pegando lista de series.");
+	serieCtrl.list(function(resp){
+		res.send(resp);
+	});
+});
+
+app.get('/series/:num', function(req, res){
+	//res.end("Pegando usuario com esse ID");
+	serieCtrl.listLimit(req.params.num, function(resp){
+		res.send(resp);
+	});
+	console.log("Pegando apenas main "+ req.params.num);
+});
+
+app.get('/tvshows', function(req, res){
+	console.log("Pegando lista de tvshows.");
+	tvshowCtrl.list(function(resp){
+		res.send(resp);
+	});
+});
+
+app.get('/tvshows/:num', function(req, res){
+	//res.end("Pegando usuario com esse ID");
+	tvshowCtrl.listLimit(req.params.num, function(resp){
+		res.send(resp);
+	});
+	console.log("Pegando apenas main "+ req.params.num);
+});
+
 app.post('/movies', function(req, res){
 	//var title = validator.escape(req.body.title);
 	//console.log("\n"+req.body.title);
@@ -54,6 +103,22 @@ app.post('/movies', function(req, res){
 		res.send(resp);
 	});
 	console.log("Gravando filme.");
+});
+
+app.post('/series', function(req, res){
+	serieCtrl.save(req.body, function(resp){
+		console.log(resp);
+		res.send(resp);
+	});
+	console.log("Gravando série.");
+});
+
+app.post('/tvshows', function(req, res){
+	tvshowCtrl.save(req.body, function(resp){
+		console.log(resp);
+		res.send(resp);
+	});
+	console.log("Gravando tvshow.");
 });
 
 app.put('/movies/:images:/:comment/:sinopse/:release:/:stars/:categories/:duracao/:atores/:trailer:/:lancamento', 
