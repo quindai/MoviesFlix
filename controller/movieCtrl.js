@@ -22,6 +22,17 @@ exports.search = function(arg, callback){
 	});
 };
 
+exports.search_categories = function(arg, callback){
+	console.log("Em search");
+	db.Movies.find({'categories': new RegExp(arg+'+',"i")}, function(error, movies){
+		if(error){
+			callback({error: 'Não foi possível retornar os dados!'});
+		} else {
+			callback(movies);
+		}
+	});
+};
+
 exports.listLimit = function(num, callback){
 	console.log("Em listLimit");
 	db.Movies.find({}, function(error, movies){

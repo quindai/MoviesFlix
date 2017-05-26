@@ -6,7 +6,7 @@
 window.onload = function(){
 	$.get("/movies/4", function(data, status){
 		//var movie, serie, tvshow;
-		debugger;
+		//debugger;
 		for(i=0;i<((data.length<4) ? data.length: 4); ++i){			
 			$('#movies_main').append( preenche(data[i]) );
 		};
@@ -16,7 +16,7 @@ window.onload = function(){
 
 	$.get("/series/4", function(data, status){
 		//var movie, serie, tvshow;
-		debugger;
+		//debugger;
 		for(i=0;i<((data.length<4) ? data.length: 4); ++i){			
 			$('#series_main').append( preenche(data[i]) );
 		};
@@ -26,7 +26,7 @@ window.onload = function(){
 
 	$.get("/tvshows/4", function(data, status){
 		//var movie, serie, tvshow;
-		debugger;
+		//debugger;
 		for(i=0;i<((data.length<4) ? data.length: 4); ++i){			
 			$('#tvshows_main').append( preenche(data[i]) );
 		};
@@ -35,11 +35,28 @@ window.onload = function(){
 	});
 };
 
-var radio_control = function(){
-	var value = document.querySelector('input[name="options"]:checked').value;
-	document.getElementById('save_at').value = value;
-	document.getElementById('control-temps').style.display = (value == '/movies' ? 'none': 'block');
-};
+	var radio_control = function(){
+		var value = document.querySelector('input[name="options"]:checked').value;
+		document.getElementById('save_at').value = value;
+		document.getElementById('control-temps').style.display = (value == '/movies' ? 'none': 'block');
+	};
+	
+	var filterCt = function(){
+		//debugger;
+		//alert("funcionando");
+		$.get(document.querySelector('input[name="opts"]:checked').value, function(data, status){
+			//document.getElementById("main").innerHTML = ''; //limpa tela
+			var v = document.getElementById("main"); //limpa tela
+			while(v.childNodes.length > 1)
+			{
+			  v.removeChild(v.lastChild);
+			}
+			//debugger;
+			for(i=0;i < data.length; ++i){			
+				$('#main').append('<div id="movies_main">'+ preenche( data[i] ) +'</div>');	
+			};
+		});
+	};
 
 	var preenche = function(data){
 		return '<div class="col-sm-6 col-md-3 thumbs">'+
@@ -104,40 +121,52 @@ var radio_control = function(){
 	};
 
 	var yolo = function(url){  //preenche a tela com filmes, series ou tvshows apenas
+		var acao = "ACAO";
 		$.get(url, function(data, status){
 			document.getElementById("main").innerHTML = ''; //limpa tela
-			$('#main').append('<div class="row searchR" ><div class="btn-group" data-toggle="buttons" style="padding-left: 25%;">'+
-  					'<label class="btn btn-success active">'+
-    					'<input type="radio" name="options" id="option1" autocomplete="off" checked>TODOS'+
+			$('#main').append('<div class="row searchR" ><div class="btn-group" data-toggle="buttons" style="padding-left: 15%;">'+
+  					'<label class="btn btn-success">'+
+    					'<input type="radio" name="opts" id="option1" autocomplete="off" value="'+url+'">TODOS'+
  	 				'</label>'+
  	 				'<label class="btn btn-success">'+
-    					'<input type="radio" name="options" id="option1" autocomplete="off" checked>AÇÃO'+
+    					'<input type="radio" name="opts" id="option2" autocomplete="off" value="'+url+'/search/categories/AÇÃO">AÇÃO'+
  	 				'</label>'+
 				  	'<label class="btn btn-success">'+
-				    	'<input type="radio" name="options" id="option2" autocomplete="off">SCI-FI'+
+				    	'<input type="radio" name="opts" id="option3" autocomplete="off" value="'+url+'/search/categories/SCI-FI">SCI-FI'+
 				  	'</label>'+
 				  	'<label class="btn btn-success">'+
-				    	'<input type="radio" name="options" id="option3" autocomplete="off">ROMANCE'+
+				    	'<input type="radio" name="opts" id="option4" autocomplete="off" value="'+url+'/search/categories/ROMANCE">ROMANCE'+
 				  	'</label>'+
 				  	'<label class="btn btn-success">'+
-				    	'<input type="radio" name="options" id="option3" autocomplete="off">COMÉDIA'+
+				    	'<input type="radio" name="opts" id="option5" autocomplete="off" value="'+url+'/search/categories/COMÉDIA">COMÉDIA'+
 				  	'</label>'+
 				  	'<label class="btn btn-success">'+
-				    	'<input type="radio" name="options" id="option3" autocomplete="off">AVENTURA'+
+				    	'<input type="radio" name="opts" id="option5" autocomplete="off" value="'+url+'/search/categories/THRILLER">THRILLER'+
 				  	'</label>'+
 				  	'<label class="btn btn-success">'+
-				    	'<input type="radio" name="options" id="option3" autocomplete="off">ANIMAÇÃO'+
+				    	'<input type="radio" name="opts" id="option5" autocomplete="off" value="'+url+'/search/categories/DRAMA">DRAMA'+
 				  	'</label>'+
-					'</div><hr>');
+				  	'<label class="btn btn-success">'+
+				    	'<input type="radio" name="opts" id="option6" autocomplete="off" value="'+url+'/search/categories/AVENTURA">AVENTURA'+
+				  	'</label>'+
+				  	'<label class="btn btn-success">'+
+				    	'<input type="radio" name="opts" id="option7" autocomplete="off" value="'+url+'/search/categories/ANIMAÇÃO">ANIMAÇÃO'+
+				  	'</label>'+
+					'</div><hr>'+
+					'<script> $("input[type=radio][name=opts]").change( function(){'+
+    					'filterCt();'+
+    				'});</script>');
+				
 			for(i=0;i < data.length; ++i){			
 				$('#main').append('<div id="movies_main">'+ preenche( data[i] ) +'</div>');	
 			};
+
 		//debugger;
 		});
 
 	};
 
-
+	
      var gravar = function(form){  //inspired by - http://help.dottoro.com/ljppxrti.php
      	//alert('successfully submitted');
      	data = GetMessageBody(form);

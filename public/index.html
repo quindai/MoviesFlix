@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>ICFlix</title>
@@ -96,12 +96,12 @@
     					<input type="radio" name="options" id="option1" autocomplete="off" value='/movies' checked onchange="radio_control();">Filme
  	 				</label>
 				  	<label class="btn btn-success">
-				    	<input type="radio" name="options" id="option2" autocomplete="off" value='/series' onchange="radio_control()">Série
+				    	<input type="radio" name="options" id="option2" autocomplete="off" value='/series' onchange="radio_control();">Série
 				  	</label>
 				  	<label class="btn btn-success">
-				    	<input type="radio" name="options" id="option3" autocomplete="off" value='/tvshows' onchange="radio_control()" >TV Show
+				    	<input type="radio" name="options" id="option3" autocomplete="off" value='/tvshows' onchange="radio_control();" >TV Show
 				  	</label>
-				  	<input type="text" id="save_at" value="/movies">
+				  	<input type="hidden" id="save_at" value="/movies">
 				</div>
           		<div class="form-group">
           			<label for="title">Titulo</label>
@@ -169,9 +169,9 @@
 
 				<div class="form-group">
           			<label for="poster">Imagens</label>
-          			<input type="text" class="form-control" id="poster" name="poster" placeholder="Url Capa principal tamanhoo yyyxyyy" required/>
+          			<input type="text" class="form-control" id="poster" name="poster" placeholder="Url Capa principal tamanhoo big" required/>
           			<input type="text" class="form-control" id="backimage" placeholder="Url SubCapa tamanho yyyyxyyy" name="backimage" />
-          			<input type="text" class="form-control" id="smallposter" placeholder="Url Capa de rosto tamanho 1920 x 1080" name="smallposter" required/>
+          			<input type="text" class="form-control" id="smallposter" placeholder="Url Capa de rosto tamanho 960 x 540" name="smallposter" required/>
           			<input type="text" class="form-control" id="othersposter" placeholder="url de outras imagens do filme separados por vírgula" name="othersposter" />
           		</div>
 
@@ -201,14 +201,14 @@
       		yolo($(this).context.title);
     	});
 
-
+    	
 </script>
-	<!--script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script
 	http://1000hz.github.io/bootstrap-validator/-->
 
 
 
-	<div id="disqus_thread"></div>
+	<!--div id="disqus_thread"></div>
 <script>
 
 /**

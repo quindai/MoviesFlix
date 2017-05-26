@@ -37,6 +37,15 @@ app.get('/movies/search/:arg', function(req, res){
 	
 });
 
+app.get('/movies/search/categories/:arg', function(req, res){
+	//res.end("Pegando lista de usuarios");
+	console.log("Pesquisando filme por categoria. "+ req.params.arg);
+	movieCtrl.search_categories(req.params.arg ,function(resp){
+		res.send(resp);
+	});
+	
+});
+
 app.get('/movies/:num', function(req, res){
 	//res.end("Pegando usuario com esse ID");
 	movieCtrl.listLimit(req.params.num, function(resp){
