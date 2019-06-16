@@ -10,7 +10,7 @@ var allowCors = function(req, res, next){
 	res.header('Access-Control-Allow-Credentials', 'true');
 	next(); // continue com o processamento
 }
- app.listen(5000);
+ app.listen(process.env.PORT || 5000);
  app.use(allowCors);
  app.use(bodyParser.json());
  app.use(express.static(__dirname + '/public'));

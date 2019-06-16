@@ -1,4 +1,4 @@
-var db_string = 'mongodb://127.0.0.1/icflix';
+var db_string = 'mongodb://randy:.r4ndy@ds137827.mlab.com:37827/moviesflix';
 var mongoose = require('mongoose').connect(db_string);
 var db = mongoose.connection;
 
