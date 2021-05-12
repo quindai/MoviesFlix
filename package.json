@@ -22,7 +22,7 @@
     "express": "^4.13.3",
     "kerberos": "0.0.18",
     "mongoose": "^4.2.8",
-    "nodemailer": "^2.4.2",
+    "nodemailer": "^6.4.16",
     "validator": "^4.3.0"
   },
   "devDependencies": {},
