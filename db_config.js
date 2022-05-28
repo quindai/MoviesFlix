@@ -1,4 +1,5 @@
-var db_string = 'mongodb://randy:.r4ndy@ds137827.mlab.com:37827/moviesflix';
+//var db_string = 'mongodb://randy:.r4ndy@ds137827.mlab.com:37827/moviesflix';
+var db_string = 'mongodb+srv://randy:<password>@moviesflix.nefe5yz.mongodb.net/?retryWrites=true&w=majority';
 var mongoose = require('mongoose').connect(db_string);
 var db = mongoose.connection;
 
