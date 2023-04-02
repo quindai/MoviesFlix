@@ -4,7 +4,7 @@ var db_string =
 
 var mongoose = require("mongoose");
 mongoose
-  .connect(db_string)
+  .connect(db_string, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to the database ");
 
