@@ -2,8 +2,10 @@
 ![forks](https://img.shields.io/github/forks/quindai/MoviesFlix.svg)
 [![stars](https://img.shields.io/github/stars/quindai/MoviesFlix.svg)](https://github.com/quindai/MoviesFlix/stargazers)
 ![GPL-3.0 Licence](https://img.shields.io/badge/license-AGPL-blue.svg)
+
 # MoviesFlix
-ICFlix
+
+**NOTICE:** No .env variables were used, this is just for testing, please set your env variables for production.
 
 Para rodar você precisa de dois servidores, um de aplicação para os arquivos estáticos, pode ser o nginx, tomcat, lighttpd ou qualquer outro de sua preferência, para o windows vamos usar o http-server, e outro para o conteúdo dinâmico, REST API, conexão com o banco de dados, envio de email, etc, vamos usar o Node com o ExpressJS.
 
